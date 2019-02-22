@@ -1,0 +1,156 @@
+<!--
+    Un cliente quiere una app que identifique si un nombre introducido tiene mas de 5 letras ademas de eso,
+    Debe mostrar si la persona el mayor de edad y con un mensaje formateado de la siguiente forma. 
+    inicial del nombre punto Apellido completo no es mayor de edad ejemplo
+    E.Marquez es mayor de edad
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="./validacion.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<style>
+    .input-group {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+        
+    }
+    .input-group-text {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: .375rem .75rem;
+        margin-bottom: 0;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #f8f9fa;
+        text-align: center;
+        white-space: nowrap;
+        background-color: #17a2b8fa;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+    
+    }
+    .panel {
+    margin-top: 100px;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+.btn-secondary {
+    color: #fff;
+    border-color: #f8f9fa;
+    vertical-align: center;
+}
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: #086d00;
+    border-color: #4e555b00;
+}
+    </style >
+
+<body>
+
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+                <div class="container d-flex justify-content-between">
+                  <a href="#" class="navbar-brand d-flex align-items-center">
+                    <span class="oi oi-people" style="font-size: 40px"></span>
+                    <strong>Registro de Usuario</strong>
+                  </a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                </div>
+              </div>
+<div class="panel"> 
+    <div>            
+    <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Nombre</span>
+        </div>
+        <input type="text" id="nombre" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm">
+    </div>
+    <div class="alert alert-danger" role="alert" style="display:none" id="msjNombre">
+
+    </div>
+
+    
+    <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Apellido</span>
+        </div>
+        <input type="text" id="apellido" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm">
+    </div>
+
+    
+    <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Edad</span>
+        </div>
+        <input type="text" id="edad" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm" >
+    </div>
+    <div class="alert alert-danger" role="alert" style="display:none" id="mensajeEdad">
+        
+    </div>
+    <label for="address">Seleccione si posee alguna de las siguientes Tarjetas de Credito.</label>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary" onclick="tdc('visa')">
+          <input type="radio" name="options" id="option1" autocomplete="off" > Visa
+        </label>
+        <label class="btn btn-secondary" onclick="tdc('master')">
+          <input type="radio" name="options" id="option2" autocomplete="off" > Mastercad
+        </label>
+        <label class="btn btn-secondary" onclick="tdc('cabal')"> 
+          <input type="radio" name="options" id="option3" autocomplete="off" > Cabal
+        </label>
+        <label class="btn btn-secondary" onclick="tdc('american')">
+            <input type="radio" name="options" id="option4" autocomplete="off"  > American Express
+          </label>
+          <label class="btn btn-secondary" onclick="tdc('naranja')">
+            <input type="radio" name="options" id="option5" autocomplete="off" > Naranja
+          </label>
+          <label class="btn btn-secondary active" onclick="tdc('')">
+            <input type="radio" name="options" id="option6" autocomplete="off" checked > Ninguna
+          </label>
+      </div>
+      <div style="display:none" id="cuotas">
+        
+    
+      <select class="Custom-select">
+        <option selected>Cuotas</option>
+        <option value="1">1 Pago</option>
+        <option value="3">3 Cuotas</option>
+        <option value="6">6 Cuotas</option>
+        <option value="12">12 Cuotas</option>
+      </select>
+    </div>
+<br>
+<br>
+    <button type="button" class="btn btn-danger" onclick="consulta()">
+        Siguiente->
+    </button>
+
+</div> 
+</div>
+
+</body>
+</html>
